@@ -25,7 +25,7 @@ Tunneling_Webshell POC
 `sudo apt update && sudo apt install proxychains4 -y`
 
 ### 7. proxychains4.conf 맨 아래 작성
-`sudo vim cat /etc/proxychains4.conf`
+`sudo vim cat /etc/proxychains4.conf`  
 `socks5  127.0.0.1  1080`
 
 
