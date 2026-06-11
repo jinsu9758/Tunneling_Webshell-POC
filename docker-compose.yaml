@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  pivot-host:
+    image: tomcat:9.0-jdk11
+    container_name: pivot-host
+    ports:
+      - "8000:8080"
+    volumes:
+      # 로컬의 webapp 폴더를 컨테이너의 ROOT 폴더로 연결합니다.
+      # 이제 로컬에서 코드를 수정하면 컨테이너에 즉시 반영됩니다.
+      - ./webapp:/usr/local/tomcat/webapps/ROOT
+    networks:
+      public_net:
+        ipv4_address: 172.20.0.20
+      private_net:
+        ipv4_address: 172.30.0.20
+
+  internal-target:
+    image: rastasheep/ubuntu-sshd
+    container_name: internal-target
+    environment:
+      - ROOT_PASSWORD=root  # 접속 비밀번호 root
+    networks:
+      private_net:
+        ipv4_address: 172.30.0.30
+
+networks:
+  public_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
+  private_net:
+    driver: bridge
+    internal: true
+    ipam:
+      config:
+        - subnet: 172.30.0.0/24
